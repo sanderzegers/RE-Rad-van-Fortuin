@@ -1,0 +1,81 @@
+//------------------------------------------------
+//--- 010 Editor v11.0.1 Script File
+//
+//      File: RVF-VOC-Extract
+//   Authors: Sander Zegers
+//   Version: 0.1
+//   Purpose: Extract audio files from the 90's dutch DOS computer game
+//            Rad van Fortuin. The sound files are in the Creative Voice File format and
+//            are located both in the RVF.EXE file and RVF.SND file.
+//            To change the filepath adjust the output'filename' string and reset
+//            counterInFilename to the location where the counter is located in the string
+//            
+//  Category: Games
+//   History: 0.1 Initial release
+//------------------------------------------------
+
+local uchar searchValue[8] = {0x1a,0x1a,0x00,0x0a,0x01,0x29,0x11,0x1};
+
+local uchar vocHeader[] = "Creative Voice File";
+
+local string filename = "C:\\radvf\\exesound000.voc";
+local ubyte counterInFilename = 19; // location of the number in filename which increments
+local int fileNameCounter = 0;
+
+local int i;
+
+
+TFindResults r = FindAll(searchValue);
+
+Printf("Found %d VOC Files\n", r.count);
+
+for (i=0;i<r.count;i++){
+    fixVocHeader(r.start[i]);
+    extractVoiceFile(r.start[i]);
+}
+
+// Replace header with correct .voc header "Creative Voice File"
+void fixVocHeader(uint location){
+    location -=19;
+    local int i;
+    for (i=0;i<19;i++,location++){
+        WriteByte(location,vocHeader[i]);
+    }
+};
+
+
+// Extract .voc file into a seperate file
+void extractVoiceFile(uint location){
+    local uchar fileLengthBytes[3];
+    local uint fileLength;
+    local uint i;
+    location += 8;
+    for (i=0;i<3;i++,location++){
+        fileLengthBytes[i] = ReadByte(location);
+    }
+    fileLength = fileLengthBytes[0] + fileLengthBytes[1]*256 + fileLengthBytes[2]*256*256;
+    
+    location = location - 3 - 8 - 19; //reset location to include modified VOC header
+
+    
+    getNextFileName();
+
+    if (FileSaveRange(filename,location,fileLength)>=0){
+        Printf("Saved File: %s\n",filename);
+    }
+
+};
+
+void getNextFileName(){
+
+    filename[counterInFilename] += 1;
+    fileNameCounter++;
+
+    
+    if (fileNameCounter >=10 && fileNameCounter % 10 == 0){
+        filename[counterInFilename] -= 10;    
+        filename[counterInFilename-1] += 1;
+    }
+    
+};
+    

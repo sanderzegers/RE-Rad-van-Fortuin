@@ -1,0 +1,36 @@
+//------------------------------------------------
+//--- 010 Editor v11.0.1 Binary Template
+//
+//      File: rvf.dta.bt
+//   Authors: Sander Zegers
+//   Version: 1.0
+//   Purpose: List all words in the Rad van Fortuin database file
+//  Category: Game
+// File Mask: *.dta
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+
+local int i;
+
+
+typedef struct
+{
+ubyte length;
+uchar content[58];
+} dbEntry <read=decodeDbEntry>;
+
+while (!FEof()) {
+    dbEntry test <name="dbEntry">;
+}
+
+string decodeDbEntry(dbEntry &record)
+{
+    local uchar decoded[60];
+
+
+    for (i=0;i<record.length;i++){
+        decoded[i] = (record.content[i]-i)/2;
+    }
+    return decoded;
+}

@@ -1,0 +1,64 @@
+//------------------------------------------------
+//--- 010 Editor v11.0.1 Binary Template
+//
+//      File: rvf.cfg.bt
+//   Authors: Sander Zegers
+//   Version: 1.0
+//   Purpose: Deobfuscate the Rad van Fortuin config file
+//  Category: Game
+// File Mask: *.cfg
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+
+
+
+local ubyte userNameLength;
+local uchar userName;
+local ubyte getUserNameCounter;
+
+short counter;
+short player_count;
+
+byte length_username1;
+userNameLength = length_username1;
+uchar username1[10] <comment=getUsername1,format=hex>;
+getUserNameCounter = 0;
+
+if (player_count >= 2){
+    byte length_username2;
+    uchar username2[10] <comment=getUsername2,format=hex>;;
+}
+if (player_count >= 3){
+    byte length_username3;
+    uchar username3[10] <comment=getUsername3,format=hex>;;
+}
+
+
+
+string getUsername1(int var){
+    local char test[length_username1];
+    local int i;
+    for (i=0;i<length_username1;i++){
+        test[i] = (username1[i]-i)/2;
+    }
+    return test;
+}
+
+string getUsername2(int var){
+    local char test[length_username2];
+    local int i;
+    for (i=0;i<length_username2;i++){
+        test[i] = (username2[i]-i)/2;
+    }
+    return test;
+}
+
+string getUsername3(int var){
+    local char test[length_username3];
+    local int i;
+    for (i=0;i<length_username3;i++){
+        test[i] = (username3[i]-i)/2;
+    }
+    return test;
+}

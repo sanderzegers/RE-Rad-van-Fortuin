@@ -30,9 +30,9 @@ The Rad van Fortuin game was created by Eric Zijlstra (E-Z Productions).
 All sound files ares stored in the Creative Voice format (https://de.wikipedia.org/wiki/VOC_(Audiocodec))
 9 out of 38 audio files are stored in the EXE File. All other files are in the RVF.SND.
 To hide the existence of VOC files the Author apparently decided to obfuscate the VOC header.
-Normaly every VOC file starts with 'Creative Voice File'. This has been modified to a random value.
+By definition every VOC file starts with 'Creative Voice File'. This has been modified to a random value.
 
-I've created an '010 Editor' script which searches for parts of the VOC header which are not obfuscated.
+I've created an '010 Editor' script (RVF-VOC-Exctract.1sc) which searches for parts of the VOC header which are not obfuscated.
 It will then fix the header and exports the file. The script works both on the .EXE and .SND file.
 VLC Player is able to play VOC files natively.
 
@@ -82,6 +82,8 @@ VLC Player is able to play VOC files natively.
 This config file only contains the amount of player and playernames which were used during the last game.
 Settings from the settings menu are not stored and must be re-set after each application launch.
 
+010-Editor template: rvf.cfg.bt 
+
 File format:
 
 Header:
@@ -100,7 +102,7 @@ uchar username; //this value is slightly obfuscated
 
 The word Database is actually not using any Database format. It's just a simple list, where every entry has a fixed length of 59 Chars.
 Each entry starts with the word length and the following word is obfuscated with the same method as used in the RVF.CFG file.
-You can use the 010 Editor script, or check out the full list here: 
+You can use the 010-Editor Template (rvf.dta.bt), or check out the full list here: wordlist.txt
 I have not found out yet how the categories (een ding, eten en drinken, etc) are mapped to the word. This must be in the game code.
 
 # Additional sources

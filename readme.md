@@ -36,46 +36,46 @@ I've created an '010 Editor' script which searches for parts of the VOC header w
 It will then fix the header and exports the file. The script works both on the .EXE and .SND file.
 VLC Player is able to play VOC files natively.
 
-| Filename | Text|
-| :-- | :-- |
-|exesound001.voc|Het is goed goed goed!|
-|exesound002.voc|(draai rad), je komt op.. |
-|exesound003.voc|Oh daar gaat de sirene, alle medeklinkers zijn op|
-|exesound004.voc|*buzzer*|
-|exesound005.voc|Goed - ja - ga maar verder|
-|exesound006.voc|Wat ga je doen?|
-|exesound007.voc|*pling*|
-|exesound008.voc|Nee - helaas niet|
-|exesound009.voc|Nee - het is aardig geprobeert, maar hij zit er niet in|
-|rvfsound001.voc|*buzzer* - is al gezegd|
-|rvfsound002.voc|Nee moet je draaien
-|rvfsound003.voc|Nee je moet een medeklinker doen want je hebt al gedraait
-|rvfsound004.voc|Je mag een klinker kopen ja
-|rvfsound005.voc|We gaan luisteren, we gaan luisteren
-|rvfsound006.voc|Je hebt geen geld genoeg om een klinker te kopen
-|rvfsound007.voc|Bankroet!
-|rvfsound008.voc|*Superronde Countdown*
-|rvfsound009.voc|*bankroet buzzer*
-|rvfsound010.voc|*fluitje* één verliesbeurt
-|rvfsound011.voc|50 gulden
-|rvfsound012.voc|150 gulden
-|rvfsound013.voc|200 gulden
-|rvfsound014.voc|300
-|rvfsound015.voc|350 gulden
-|rvfsound016.voc|400 gulden
-|rvfsound017.voc|450
-|rvfsound018.voc|550 gulden
-|rvfsound019.voc|600 gulden
-|rvfsound020.voc|700
-|rvfsound021.voc|750 gulden
-|rvfsound022.voc|800 gulden
-|rvfsound023.voc|1000 gulden - mooi bedrag
-|rvfsound024.voc|kort woord - moeilijk hè mensen
-|rvfsound025.voc|een ding
-|rvfsound026.voc|eten en drinken
-|rvfsound027.voc|een gebeurtenis
-|rvfsound028.voc|een gezegde
-|rvfsound029.voc|kretolgie
+| Filename | Text| Play WAV |
+| :-- | :-- | :-- |
+|exesound001.voc|Het is goed goed goed!| ![test](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound001.wav)
+|exesound002.voc|(draai rad), je komt op.. |![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound002.wav)
+|exesound003.voc|Oh daar gaat de sirene, alle medeklinkers zijn op|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound003.wav)
+|exesound004.voc|*buzzer*|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound004.wav)
+|exesound005.voc|Goed - ja - ga maar verder|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound005.wav)
+|exesound006.voc|Wat ga je doen?|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound006.wav)
+|exesound007.voc|*pling*|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound007.wav)
+|exesound008.voc|Nee - helaas niet|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound008.wav)
+|exesound009.voc|Nee - het is aardig geprobeert, maar hij zit er niet in|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound009.wav)
+|rvfsound001.voc|*buzzer* - is al gezegd|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound001.wav)
+|rvfsound002.voc|Nee moet je draaien|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound002.wav)
+|rvfsound003.voc|Nee je moet een medeklinker doen want je hebt al gedraait|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound003.wav)
+|rvfsound004.voc|Je mag een klinker kopen ja|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound004.wav)
+|rvfsound005.voc|We gaan luisteren, we gaan luisteren|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound005.wav)
+|rvfsound006.voc|Je hebt geen geld genoeg om een klinker te kopen|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound006.wav)
+|rvfsound007.voc|Bankroet!|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound007.wav)
+|rvfsound008.voc|*Superronde Countdown*|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound008.wav)
+|rvfsound009.voc|*bankroet buzzer*|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound009.wav)
+|rvfsound010.voc|*fluitje* één verliesbeurt|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound010.wav)
+|rvfsound011.voc|50 gulden|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound011.wav)
+|rvfsound012.voc|150 gulden|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound012.wav)
+|rvfsound013.voc|200 gulden|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound013.wav)
+|rvfsound014.voc|300|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound014.wav)
+|rvfsound015.voc|350 gulden|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound015.wav)
+|rvfsound016.voc|400 gulden|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound016.wav)
+|rvfsound017.voc|450|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound017.wav)
+|rvfsound018.voc|550 gulden|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound018.wav)
+|rvfsound019.voc|600 gulden|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound019.wav)
+|rvfsound020.voc|700|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound020.wav)
+|rvfsound021.voc|750 gulden|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound021.wav)
+|rvfsound022.voc|800 gulden|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound022.wav)
+|rvfsound023.voc|1000 gulden - mooi bedrag|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound023.wav)
+|rvfsound024.voc|kort woord - moeilijk hè mensen|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound024.wav)
+|rvfsound025.voc|een ding|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound025.wav)
+|rvfsound026.voc|eten en drinken|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound026.wav)
+|rvfsound027.voc|een gebeurtenis|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound027.wav)
+|rvfsound028.voc|een gezegde|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound028.wav)
+|rvfsound029.voc|kretolgie|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound029.wav)
 
 # Config file
 

@@ -14,11 +14,34 @@
 local int i;
 
 
+
+
+enum <ubyte> categoryID{
+    FLORA_FAUNA = 0x01,
+    ETEN_DRINKEN = 0x02,
+    GEBEURTENIS = 0x03,
+    DING = 0x04,
+    INSTELLING = 0x05,
+    PERSONEN = 0x06,
+    GEZEGDE = 0x07,
+    GEOGRAFIE = 0x08,
+    AKTIVITEIT = 0x09,
+    BIOLOGIE = 0x0a,
+    TITEL = 0x0b,
+    BEROEP = 0x0c,
+    KRETOLOGIE = 0x0d,
+};
+
+
 typedef struct
 {
-ubyte length;
-uchar content[58];
+    ubyte length;
+    uchar word[56];
+    categoryID category;
+    ubyte nullbyte;
 } dbEntry <read=decodeDbEntry>;
+
+
 
 while (!FEof()) {
     dbEntry test <name="dbEntry">;
@@ -30,7 +53,10 @@ string decodeDbEntry(dbEntry &record)
 
 
     for (i=0;i<record.length;i++){
-        decoded[i] = (record.content[i]-i)/2;
+        decoded[i] = (record.word[i]-i)/2;
     }
+
+    SPrintf(decoded, "%s,%d",decoded,record.category);
+
     return decoded;
 }

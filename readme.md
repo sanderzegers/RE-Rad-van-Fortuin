@@ -25,20 +25,33 @@ The Rad van Fortuin game was created by Eric Zijlstra (E-Z Productions).
 | RVF.SND | Sound files | Additional sound files, headers obfuscated |
 
 
+# EXE File
+
+RVF is written in Turbo Pascal 7.0. The binary executable is a 16-bit real mode dos file.
+The Soundblaster CT-Driver is linked statically. 
+
+I included the IDA database (RVF.idb). A lot of the function and variables are named. But this is still work in progress. 
+You can open the file in IDA 5.0 Freeware.
+
+
 # Sound Files
 
-All sound files ares stored in the Creative Voice format (https://de.wikipedia.org/wiki/VOC_(Audiocodec))
-9 out of 38 audio files are stored in the EXE File. All other files are in the RVF.SND.
-To hide the existence of VOC files the Author apparently decided to obfuscate the VOC header.
+All the sound files ares stored in the creative voice format (https://en.wikipedia.org/wiki/Creative_Voice_file)
+9 out of 38 voice files are stored in the EXE File, the other voices files are in the RVF.SND file.
+To hide the existence of VOC files the author apparently decided to obfuscate the VOC header.
 By definition every VOC file starts with 'Creative Voice File'. This has been modified to a random value.
 
-I've created an '010 Editor' script (RVF-VOC-Exctract.1sc) which searches for parts of the VOC header which are not obfuscated.
-It will then fix the header and exports the file. The script works both on the .EXE and .SND file.
+The sounds are played by using the CT-Voice driver, which is statically linked in the exe file.
+
+I've created an '010 Editor' script (RVF-VOC-Exctract.1sc) which is able to located the obfuscated VOC files.
+The scripts fixes the VOC header and exports the files. The script works on both the .EXE and .SND file.
 VLC Player is able to play VOC files natively.
+
+See following list with all VOC files converted to WAV
 
 | Filename | Text| Play WAV |
 | :-- | :-- | :-- |
-|exesound001.voc|Het is goed goed goed!| ![test](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound001.wav)
+|exesound001.voc|Het is goed goed goed!| ![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound001.wav)
 |exesound002.voc|(draai rad), je komt op.. |![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound002.wav)
 |exesound003.voc|Oh daar gaat de sirene, alle medeklinkers zijn op|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound003.wav)
 |exesound004.voc|*buzzer*|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/exesound004.wav)
@@ -70,7 +83,7 @@ VLC Player is able to play VOC files natively.
 |rvfsound021.voc|750 gulden|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound021.wav)
 |rvfsound022.voc|800 gulden|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound022.wav)
 |rvfsound023.voc|1000 gulden - mooi bedrag|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound023.wav)
-|rvfsound024.voc|kort woord - moeilijk hè mensen|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound024.wav)
+|rvfsound024.voc|kort woord - moeilijk he mensen|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound024.wav)
 |rvfsound025.voc|een ding|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound025.wav)
 |rvfsound026.voc|eten en drinken|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound026.wav)
 |rvfsound027.voc|een gebeurtenis|![play](https://github.com/sanderzegers/RE-Rad-van-Fortuin/raw/main/WAV/rvfsound027.wav)
@@ -79,8 +92,8 @@ VLC Player is able to play VOC files natively.
 
 # Config file
 
-This config file only contains the amount of player and playernames which were used during the last game.
-Settings from the settings menu are not stored and must be re-set after each application launch.
+The config file only contains two settings, which are stored when launching a new game: The amount of players and each player name.
+Settings from the settings menu are not stored and must be re-set after each application start.
 
 010-Editor template: rvf.cfg.bt 
 
@@ -98,12 +111,51 @@ byte length_username;
 uchar username; //this value is slightly obfuscated
 ````
 
+The obfuscation method is quite simple. See this code example:
+````
+for (i=0;i<length_username;i++)
+        result[i]=(username[i]-i)/2;
+````
+
 # Word database
 
-The word Database is actually not using any Database format. It's just a simple list, where every entry has a fixed length of 59 Chars.
-Each entry starts with the word length and the following word is obfuscated with the same method as used in the RVF.CFG file.
-You can use the 010-Editor Template (rvf.dta.bt), or check out the full list here: wordlist.txt
-I have not found out yet how the categories (een ding, eten en drinken, etc) are mapped to the word. This must be in the game code.
+The word database is just a simple list, in which every entry has a fixed length of 59 Chars.
+Each entry starts with the word length and the actual word. This is the standard Pascal sting format. 
+The words are obfuscated with the same method as used in the RVF.CFG file.
+The category ID for each entry is stored at byte 58.
+
+Category IDs:
+
+| ID | Category|
+| :-- | :-- |
+|0x01|FLORA_FAUNA|
+|0x02|ETEN_DRINKEN|
+|0x03|GEBEURTENIS|
+|0x04|DING|
+|0x05|INSTELLING|
+|0x06|PERSONEN|
+|0x07|GEZEGDE|
+|0x08|GEOGRAFIE|
+|0x09|AKTIVITEIT|
+|0x0a|BIOLOGIE|
+|0x0b|TITEL|
+|0x0c|BEROEP|
+|0x0d|KRETOLOGIE|
+
+You can use the 010-Editor Template (rvf.dta.bt) to view the DB entries, or check out the full extracted list here: ![wordlist.txt](https://github.com/sanderzegers/RE-Rad-van-Fortuin/blob/main/wordlist.txt)
+
+
+# Wheel and Randomization
+
+RVF uses the standard pascal 7.0 runtime library pseudo random number generator.
+The initial seed is created from the local system time. The next seeds are generated by multipliying the previous seed by 0x8088405 and adding 1.
+For every request to the Random function it will update the seed.
+
+Every round the wheel will turn between 38 and 56 fields.
+
+By reading the current seed, it's possible to predict all future wheel values.
+This works best in speaker mode. In Soundblaster mode, if you guess a letter which is not in the solution, the random function will be ran an additional time.
+This makes the prediction incorrect again.
 
 # Additional sources
 
@@ -114,8 +166,6 @@ I have not found out yet how the categories (een ding, eten en drinken, etc) are
 
 # Todo
 
-- [ ] How does category to word mapping work?
-- [ ] Find the randomization code which sets next wheel turn
 - [ ] Highscore format (RVA.SCR)
 - [ ] Find and extract graphics
 - [ ] Create sound effect player in Assembly for DOS

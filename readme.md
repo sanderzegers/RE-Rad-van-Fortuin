@@ -144,6 +144,10 @@ Category IDs:
 
 You can use the 010-Editor Template (rvf.dta.bt) to view the DB entries, or check out the full extracted list here: ![wordlist.txt](https://github.com/sanderzegers/RE-Rad-van-Fortuin/blob/main/wordlist.txt)
 
+Note that the letter frequencies in the word list closely match the standard Dutch letter frequency, so sticking to the common letters is a valid strategy for winning the game.
+
+![Letter Frequency](https://raw.githubusercontent.com/sanderzegers/RE-Rad-van-Fortuin/refs/heads/main/letter_frequency.png)
+
 
 # Wheel and Randomization
 
